@@ -27,7 +27,7 @@ export default function ProductBadge({ products, state }: Props) {
     <SimpleGrid columns={1} spacing={2}>
       {products.map(product => (
         <Flex key={product.internalCode}>
-        <Avatar width={150} height={150} size='xl' src={product.avatarUrl}/>
+        <Avatar width={100} height={100} size='xl' src={product.avatarUrl}/>
         <Box ml='3'>
           <Text fontWeight='bold'>
             {product.productName}
