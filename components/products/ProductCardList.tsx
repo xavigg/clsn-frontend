@@ -17,13 +17,25 @@ import {
 import { SiWhatsapp } from "react-icons/si";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { Product } from "@/app/products/models";
+import { useEffect, useState } from "react";
+import Loading from "@/app/products/loading";
 
 interface Props {
   products: Product[];
-  state: string;
 }
 
 export default function ProductCardList({ products }: Props) {
+
+  const [hasMounted, setHasMounted] = useState(false);
+
+  // Hooks
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  // Render
+  if (!hasMounted) return <Loading/>;
+
   return (
     <TableContainer>
       <Table size="sm" variant="striped" colorScheme="blackAlpha">
@@ -50,41 +62,35 @@ export default function ProductCardList({ products }: Props) {
                 />
               </Td>
               <Td>
-                <div>
-                  <b>
-                    {product.productName} - ${product.price.toLocaleString()}
-                  </b>
-                </div>
-                <div>
-                  <ButtonGroup variant="solid" spacing="2">
-                    <Button
-                      rightIcon={<SiWhatsapp />}
-                      textAlign={"center"}
-                      size="xs"
-                      isExternal
-                      as={Link}
-                      href={`http://wa.me/3364308303?text=${encodeURIComponent(
-                        `Hola, necesito info sobre ${product.productName}.`
-                      )}`}
-                      colorScheme={"whatsapp"}
-                    >
-                      Consultar
-                    </Button>
-                    <Button
-                      rightIcon={<InfoOutlineIcon />}
-                      size="xs"
-                      isExternal
-                      as={Link}
-                      href={`http://wa.me/3364308303?text=${encodeURIComponent(
-                        `Hola, necesito info sobre ${product.description}.`
-                      )}`}
-                      colorScheme={"facebook"}
-                      margin={"auto"}
-                    >
-                      Info
-                    </Button>
-                  </ButtonGroup>
-                </div>
+                {product.productName} - ${product.price.toLocaleString()}
+                <ButtonGroup variant="solid" spacing="2">
+                  <Button
+                    rightIcon={<SiWhatsapp />}
+                    textAlign={"center"}
+                    size="xs"
+                    isExternal
+                    as={Link}
+                    href={`http://wa.me/3364308303?text=${encodeURIComponent(
+                      `Hola, necesito info sobre ${product.productName}.`
+                    )}`}
+                    colorScheme={"whatsapp"}
+                  >
+                    Consultar
+                  </Button>
+                  <Button
+                    rightIcon={<InfoOutlineIcon />}
+                    size="xs"
+                    isExternal
+                    as={Link}
+                    href={`http://wa.me/3364308303?text=${encodeURIComponent(
+                      `Hola, necesito info sobre ${product.description}.`
+                    )}`}
+                    colorScheme={"facebook"}
+                    margin={"auto"}
+                  >
+                    Info
+                  </Button>
+                </ButtonGroup>
               </Td>
             </Tr>
           ))}
@@ -93,4 +99,3 @@ export default function ProductCardList({ products }: Props) {
     </TableContainer>
   );
 }
-

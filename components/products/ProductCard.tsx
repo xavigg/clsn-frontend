@@ -15,13 +15,25 @@ import {
 } from "@chakra-ui/react";
 import { SiWhatsapp } from "react-icons/si";
 import { Product } from "@/app/products/models";
+import { useEffect, useState } from "react";
+import Loading from "@/app/products/loading";
 
 interface Props {
   products: Product[];
-  state: string;
 }
 
 export default function ProductCard({ products }: Props) {
+  
+  const [hasMounted, setHasMounted] = useState(false);
+  
+  // Hooks
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  // Render
+  if (!hasMounted) return <Loading/>;
+
   return (
     <div>
       <SimpleGrid minChildWidth="330px" spacing="10px">

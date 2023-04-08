@@ -10,12 +10,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <head/>
+      <head></head>
       <body>
         <CacheProvider>
           <ChakraProvider>
           <Header>
-            {children}
+          {children}
           </Header>
           </ChakraProvider>
         </CacheProvider>
