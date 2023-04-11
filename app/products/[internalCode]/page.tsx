@@ -14,11 +14,7 @@ async function fetchProductByInternalCode(internalCode: string) {
  async function ProductDetail({ params: { internalCode } }: Params) {
    const data = await fetchProductByInternalCode(internalCode);
 
-   return (
-     <div>
-       <ProductDetailCard products={data}></ProductDetailCard>
-     </div>
-   );
+   return ( <ProductDetailCard products={data} /> );
  }
 
 export default ProductDetail;

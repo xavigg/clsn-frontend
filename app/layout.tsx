@@ -1,5 +1,5 @@
 'use client';
-import Header from '@/components/Layouts/Header';
+import { Footer, Header } from '@/components';
 import { CacheProvider } from '@chakra-ui/next-js';
 import { ChakraProvider } from '@chakra-ui/react';
 
@@ -14,9 +14,8 @@ export default function RootLayout({
       <body>
         <CacheProvider>
           <ChakraProvider>
-          <Header>
-          {children}
-          </Header>
+          <Header>{children}</Header>
+          <Footer/>
           </ChakraProvider>
         </CacheProvider>
       </body>

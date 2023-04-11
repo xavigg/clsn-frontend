@@ -13,5 +13,4 @@ async function Products() {
 
 };
 
-
 export default Products;

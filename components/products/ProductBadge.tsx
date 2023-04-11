@@ -3,10 +3,9 @@ import {
   Button,
   Text,
   ButtonGroup,
-  Link,
   SimpleGrid,
   Flex,
-  Avatar,
+  Image,
   Box,
   Badge,
 } from "@chakra-ui/react";
@@ -15,6 +14,7 @@ import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { Product } from "@/app/products/models";
 import { useEffect, useState } from "react";
 import Loading from "@/app/products/loading";
+import Link from 'next/link';
 
 interface Props {
   products: Product[];
@@ -37,15 +37,14 @@ if (!hasMounted) return <Loading/>;
       {products.map((product) => (
         <div key={product._id}>
           <Flex>
-            <Avatar
+            <Image
               width={100}
               height={100}
-              size="xl"
               src={product.avatarUrl}
             />
             <Box ml="3">
               <Text fontWeight="bold">
-                {product.productName}
+                <Link href={`products/${product.internalCode}`}>{product.productName}</Link>
                 <Badge ml="1" colorScheme="green">
                   {product.details.condition}
                 </Badge>
@@ -57,30 +56,30 @@ if (!hasMounted) return <Loading/>;
                 <b>EFECTIVO: </b>${product.price.toLocaleString()}
               </Text>
               <ButtonGroup variant="solid" spacing="2">
+
                 <Button
+                  target="_blank"
                   rightIcon={<SiWhatsapp />}
                   textAlign={"center"}
                   size="xs"
-                  isExternal
                   as={Link}
                   href={`http://wa.me/3364308303?text=${encodeURIComponent(
                     `Hola, necesito info sobre ${product.productName}.`
                   )}`}
-                  colorScheme={"whatsapp"}
-                >
+                  colorScheme={"whatsapp"}>
                   Consultar
                 </Button>
+
                 <Button
+                target="_blank"
                   rightIcon={<InfoOutlineIcon />}
                   size="xs"
-                  isExternal
                   as={Link}
                   href={`http://wa.me/3364308303?text=${encodeURIComponent(
-                    `Hola, necesito info sobre ${product.description}.`
+                    `Hola, necesito info sobre ${product.productName}.`
                   )}`}
                   colorScheme={"facebook"}
-                  margin={"auto"}
-                >
+                  margin={"auto"}>
                   Detalles
                 </Button>
               </ButtonGroup>
