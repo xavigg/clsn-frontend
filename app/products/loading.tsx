@@ -1,3 +1,3 @@
 export default function Loading() {
-    return <h2>🌀 Loading data from server, wait a few seconds...</h2>;
+    return <h2>🌀 Cargando data desde el server, aguarde unos segundos...</h2>;
   }

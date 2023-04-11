@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['sharecomputacion.com'],
+    domains: ['sharecomputacion.com', 'cdn.smart-gsm.com'],
   },
 }
 

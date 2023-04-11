@@ -63,7 +63,7 @@ if (!hasMounted) return <Loading/>;
                   textAlign={"center"}
                   size="xs"
                   as={Link}
-                  href={`http://wa.me/3364308303?text=${encodeURIComponent(
+                  href={`http://wa.me/3364194402?text=${encodeURIComponent(
                     `Hola, necesito info sobre ${product.productName}.`
                   )}`}
                   colorScheme={"whatsapp"}>
@@ -71,13 +71,10 @@ if (!hasMounted) return <Loading/>;
                 </Button>
 
                 <Button
-                target="_blank"
                   rightIcon={<InfoOutlineIcon />}
                   size="xs"
                   as={Link}
-                  href={`http://wa.me/3364308303?text=${encodeURIComponent(
-                    `Hola, necesito info sobre ${product.productName}.`
-                  )}`}
+                  href={`products/${product.internalCode}`}
                   colorScheme={"facebook"}
                   margin={"auto"}>
                   Detalles
