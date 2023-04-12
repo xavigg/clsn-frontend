@@ -12,9 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
-
-const Links = ['Inicio', 'Lista'];
-const urlNav = ['http://localhost:3001', 'http://localhost:3001/products'];
+import { Routes } from '@/models';
 
 interface Props {
   children: React.ReactNode,
@@ -22,14 +20,12 @@ interface Props {
 
  const navURLs = [
   { name: "Inicio", 
-   path: "/" 
+    path: Routes.HOME,
   },
   {
     name: "Lista",
-    path: "/products",
-  },
-
-];
+    path: Routes.PRODUCTS,
+  },];
 
 const NavLink = ({ children }: Props) => (
   <Box
@@ -58,7 +54,9 @@ export default function withAction({ children }: { children: ReactNode }) {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box color="white"><Image width={200} height={37} src="img/logo3.png" alt="asd"/></Box>
+            <Box color="white">
+            <Image width={200} height={37} src={Routes.LOGO} alt="asd"/>
+            </Box>
             <HStack
               color="white"
               as={'nav'}
