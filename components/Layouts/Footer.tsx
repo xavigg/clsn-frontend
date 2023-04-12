@@ -8,7 +8,7 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from '@chakra-ui/react';
-import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaInstagram, FaRegHandPointRight, FaFacebookF, FaStore } from 'react-icons/fa';
 import { ReactNode } from 'react';
 
 
@@ -45,7 +45,7 @@ const SocialButton = ({
 
 export default function SmallWithLogoLeft() {
   return (
-    <Box bgGradient="linear(to-r, yellow.300, yellow.400, yellow.300)">
+    <Box bgGradient="linear(to-tr, #ffd633, #e6b800, yellow.200)">
       <Container
         as={Stack}
         maxW={'6xl'}
@@ -54,10 +54,14 @@ export default function SmallWithLogoLeft() {
         spacing={4}
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}>
-        <Text align={"center"}>🏪 <b>Nacion 209 - San Nicolas</b> <br/> Seguinos en nuestras redes 👇</Text>
-        <Stack direction={'row'} spacing={6}>
+        <Box alignContent={"center"}>
+         <FaStore/>
+         <Text align={"center"}>Nacion 209 - San Nicolas</Text></Box>
+        <Stack align={"center"} direction={'row'} spacing={4}>
+        <Text align={"center"}>Seguinos en nuestras redes</Text>
+        <FaRegHandPointRight /> 
           <SocialButton label={'Facebook'} href={'https://www.facebook.com/celuslibres.sn/'}>
-            <FaYoutube />
+            <FaFacebookF />
           </SocialButton>
           <SocialButton label={'Instagram'} href={'https://www.instagram.com/celuslibres/'}>
             <FaInstagram />

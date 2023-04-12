@@ -22,6 +22,7 @@ import {
   MdScreenshot,
 } from "react-icons/md";
 import Loading from "@/app/products/loading";
+import "@/styles/test.css";
 
 interface StatsCardProps {
   title: string;
@@ -85,7 +86,7 @@ export default function BasicProductDetail({ products }: Props) {
         fontWeight={"bold"}
       >
         {products.productName}
-        <div className="test">
+        <div className="test"> 
           <Image
             priority
             alt="asd"

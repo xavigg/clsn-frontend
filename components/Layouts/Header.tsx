@@ -58,7 +58,7 @@ export default function withAction({ children }: { children: ReactNode }) {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box color="white"><Image width={200} height={37} src="img/logo.png" alt="asd"/></Box>
+            <Box color="white"><Image width={200} height={37} src="img/logo3.png" alt="asd"/></Box>
             <HStack
               color="white"
               as={'nav'}
