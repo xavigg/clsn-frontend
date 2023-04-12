@@ -86,7 +86,7 @@ export default function BasicProductDetail({ products }: Props) {
         fontWeight={"bold"}
       >
         {products.productName}
-        <div className="test"> 
+        <div className="test">
           <Image
             priority
             alt="asd"
@@ -96,7 +96,8 @@ export default function BasicProductDetail({ products }: Props) {
           />
         </div>
       </chakra.h1>
-
+      <div>{products.description}</div>
+      <br />
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
         <StatsCard
           title={"Procesador"}
