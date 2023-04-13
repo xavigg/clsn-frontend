@@ -1,6 +1,6 @@
 export enum Routes {
     /* LOGO */
-    LOGO = "img/logo3.png",
+    LOGO = "img/logo.png",
     
     /* INICIO DE APLICACION */
     HOME = "/",

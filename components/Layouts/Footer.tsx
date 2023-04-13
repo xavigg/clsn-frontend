@@ -52,9 +52,9 @@ const SocialButton = ({
 
 export default function SmallWithLogoLeft() {
   return (
-    <Box bgGradient="linear(to-r, gray.600, gray.700, gray.600)">
+    <Box boxShadow={'xs'}>
       <Container
-        color={"white"}
+        color={"black"}
         as={Stack}
         maxW={"6xl"}
         py={4}

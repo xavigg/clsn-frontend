@@ -44,7 +44,7 @@ export default function withAction({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Box bgGradient="linear(to-r, gray.600, gray.700, gray.600)" px={4}>
+      <Box boxShadow='md' px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}

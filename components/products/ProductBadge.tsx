@@ -17,16 +17,70 @@ import { FiSmartphone } from "react-icons/fi";
 import { Product } from "@/app/products/models";
 import { useEffect, useState } from "react";
 import Loading from "@/app/products/loading";
-import Link from 'next/link';
-import '@/styles/test.css';
-import { Icon } from '@iconify/react';
+import Link from "next/link";
+import "@/styles/test.css";
+import { Icon } from "@iconify/react";
 
 interface Props {
   products: Product[];
 }
 
-export default function ProductBadge({ products }: Props) {
+const BadgeCheckColor = (badgeStatus: string) => {
+  return (
+    <>
+      {badgeStatus === "NUEVO" ? (
+        <Badge variant="outline" ml="1" colorScheme="purple">
+          {badgeStatus}
+        </Badge>
+      ) : badgeStatus === "OFERTA" ? (
+        <Badge variant="outline" ml="1" colorScheme="green">
+          {badgeStatus}
+        </Badge>
+      ) : (
+        <Badge variant="outline" ml="1" colorScheme="red">
+          {badgeStatus}
+        </Badge>
+      )}
+    </>
+  );
+};
 
+const buttonAction = (productName: string, internalCode: string) => {
+  return (
+    <>
+      <ButtonGroup margin-top={2} variant="solid" spacing="2">
+        <Button
+          boxShadow={"md"}
+          variant={"solid"}
+          className={"btn-details"}
+          target={"_blank"}
+          leftIcon={<SiWhatsapp />}
+          textAlign={"center"}
+          size={"xs"}
+          as={Link}
+          href={`http://wa.me/3364194402?text=${encodeURIComponent(`Hola, necesito info sobre ${productName}.`)}`}
+          colorScheme={"whatsapp"}>
+          Consultar
+        </Button>
+
+        <Button
+          boxShadow={"md"}
+          variant={"outline"}
+          className={"btn-details"}
+          leftIcon={<FiSmartphone />}
+          size={"xs"}
+          as={Link}
+          href={`products/${internalCode}`}
+          colorScheme={"twitter"}
+          margin={"auto"}>
+          Detalles
+        </Button>
+      </ButtonGroup>
+    </>
+  );
+};
+
+export default function ProductBadge({ products }: Props) {
   const [hasMounted, setHasMounted] = useState(false);
 
   // Hooks
@@ -39,197 +93,121 @@ export default function ProductBadge({ products }: Props) {
 
   return (
     <SimpleGrid columns={1} spacing={2}>
-
-      <HStack><Icon icon="logos:samsung" /></HStack>
-      <Divider colorScheme={"whatsapp"} orientation='horizontal' />
+      <HStack>
+        <Icon icon="logos:samsung" />
+      </HStack>
+      <Divider colorScheme={"whatsapp"} orientation="horizontal" />
       {products.map((product) => (
         <>
-          {product.brand == "SAMSUNG" &&
+          {product.brand == "SAMSUNG" && (
             <Flex key={product._id}>
-              <Image
-                width={100}
-                height={100}
-                src={product.avatarUrl}
-              />
+              <Image width={100} height={100} src={product.avatarUrl} />
               <Box ml="3">
                 <Text fontWeight="bold">
-                  <Link href={`products/${product.internalCode}`}>{product.productName}</Link>
-                  {product.details.condition === "NUEVO"
-                    ? <Badge variant='outline' ml="1" colorScheme="purple">{product.details.condition}</Badge>
-                    : product.details.condition === "OFERTA"
-                      ? <Badge variant='subtle' ml="1" colorScheme="green">{product.details.condition}</Badge>
-                      : <Badge variant='solid' ml="1" colorScheme="red">{product.details.condition}</Badge>
-                  }
+                  <Link href={`products/${product.internalCode}`}>
+                    {product.productName}
+                  </Link>
+                  {BadgeCheckColor(product.details.condition)}
                 </Text>
-                <Divider colorScheme={"whatsapp"} orientation='horizontal' />
+                <Divider orientation="horizontal" />
                 <Text fontSize="sm">
-                  <b>{product.details.ramSize}GB RAM / {product.details.storageSize}GB MEMORIA</b>
+                  <b>
+                    {product.details.ramSize}GB RAM /{" "}
+                    {product.details.storageSize}GB MEMORIA
+                  </b>
                   <br />
                 </Text>
-                <Text fontSize="sm">
-                  <Divider colorScheme={"whatsapp"} orientation='horizontal' />
-                  <b>PRECIO:</b> ${product.price.toLocaleString()} Efectivo
-                </Text>
-                <Divider colorScheme={"whatsapp"} orientation='horizontal' />
-                <ButtonGroup margin-top={2} variant="solid" spacing="2">
-
-                  <Button
-                    className={"btn-details"}
-                    target="_blank"
-                    leftIcon={<SiWhatsapp />}
-                    textAlign={"center"}
-                    size="xs"
-                    as={Link}
-                    href={`http://wa.me/3364194402?text=${encodeURIComponent(
-                      `Hola, necesito info sobre ${product.productName}.`
-                    )}`}
-                    colorScheme={"whatsapp"}>
-                    Consultar
-                  </Button>
-
-                  <Button
-                    className={"btn-details"}
-                    leftIcon={<FiSmartphone />}
-                    size="xs"
-                    as={Link}
-                    href={`products/${product.internalCode}`}
-                    colorScheme={"yellow"}
-                    margin={"auto"}>
-                    Especificaciones
-                  </Button>
-                </ButtonGroup>
-              </Box>
-            </Flex>
-          }</>
-      ))}
-
-      <HStack><Icon icon="simple-icons:motorola" color="#5c92fa"/><Text fontWeight="bold" fontSize={23} color={"#5c92fa"}>MOTOROLA</Text></HStack>
-      <Divider colorScheme={"whatsapp"} orientation='horizontal' />
-      {products.map((product) => (
-        <>
-          {product.brand == "MOTOROLA" &&
-            <Flex key={product._id}>
-              <Image
-                width={100}
-                height={100}
-                src={product.avatarUrl}
-              />
-              <Box ml="3">
-                <Text fontWeight="bold">
-                  <Link href={`products/${product.internalCode}`}>{product.productName}</Link>
-                  {product.details.condition === "NUEVO"
-                    ? <Badge variant='outline' ml="1" colorScheme="purple">{product.details.condition}</Badge>
-                    : product.details.condition === "OFERTA"
-                      ? <Badge variant='subtle' ml="1" colorScheme="green">{product.details.condition}</Badge>
-                      : <Badge variant='solid' ml="1" colorScheme="red">{product.details.condition}</Badge>
-                  }
-                </Text>
-                <Divider colorScheme={"whatsapp"} orientation='horizontal' />
-                <Text fontSize="sm">
-                  <b>{product.details.ramSize}GB RAM / {product.details.storageSize}GB MEMORIA</b>
-                  <br />
-                </Text>
-                <Text fontSize="sm">
-                  <Divider colorScheme={"whatsapp"} orientation='horizontal' />
+                <Text fontSize="sm" color={"red"}>
+                  <Divider orientation="horizontal" />
                   <b>PRECIO:</b> ${product.price.toLocaleString()}
                 </Text>
-                <Divider colorScheme={"whatsapp"} orientation='horizontal' />
-                <ButtonGroup margin-top={2} variant="solid" spacing="2">
-
-                  <Button
-                    className={"btn-details"}
-                    target="_blank"
-                    leftIcon={<SiWhatsapp />}
-                    textAlign={"center"}
-                    size="xs"
-                    as={Link}
-                    href={`http://wa.me/3364194402?text=${encodeURIComponent(
-                      `Hola, necesito info sobre ${product.productName}.`
-                    )}`}
-                    colorScheme={"whatsapp"}>
-                    Consultar
-                  </Button>
-
-                  <Button
-                    className={"btn-details"}
-                    leftIcon={<FiSmartphone />}
-                    size="xs"
-                    as={Link}
-                    href={`products/${product.internalCode}`}
-                    colorScheme={"yellow"}
-                    margin={"auto"}>
-                    Especificaciones
-                  </Button>
-                </ButtonGroup>
+                <Divider orientation="horizontal" />
+                {buttonAction(product.productName, product.internalCode)}
               </Box>
             </Flex>
-          }</>
+          )}
+        </>
       ))}
 
-      <HStack><Icon icon="simple-icons:xiaomi" color="#ff6700" /><Text fontWeight="bold" fontSize={23}  color="#ff6700">XIAOMI</Text></HStack>
-      <Divider colorScheme={"whatsapp"} orientation='horizontal' />
+      <HStack>
+        <Icon icon="simple-icons:motorola" color="#5c92fa" />
+        <Text fontWeight="bold" fontSize={23} color={"#5c92fa"}>
+          MOTOROLA
+        </Text>
+      </HStack>
+      <Divider colorScheme={"whatsapp"} orientation="horizontal" />
       {products.map((product) => (
         <>
-          {product.brand == "XIAOMI" &&
+          {product.brand == "MOTOROLA" && (
             <Flex key={product._id}>
-              <Image
-                width={100}
-                height={100}
-                src={product.avatarUrl}
-              />
+              <Image width={100} height={100} src={product.avatarUrl} />
               <Box ml="3">
                 <Text fontWeight="bold">
-                  <Link href={`products/${product.internalCode}`}>{product.productName}</Link>
-                  {product.details.condition === "NUEVO"
-                    ? <Badge variant='outline' ml="1" colorScheme="purple">{product.details.condition}</Badge>
-                    : product.details.condition === "OFERTA"
-                      ? <Badge variant='subtle' ml="1" colorScheme="green">{product.details.condition}</Badge>
-                      : <Badge variant='solid' ml="1" colorScheme="red">{product.details.condition}</Badge>
-                  }
+                  <Link href={`products/${product.internalCode}`}>
+                    {product.productName}
+                  </Link>
+
+                  {BadgeCheckColor(product.details.condition)}
                 </Text>
-                <Divider colorScheme={"whatsapp"} orientation='horizontal' />
+                <Divider colorScheme={"whatsapp"} orientation="horizontal" />
                 <Text fontSize="sm">
-                  <b>{product.details.ramSize}GB RAM / {product.details.storageSize}GB MEMORIA</b>
+                  <b>
+                    {product.details.ramSize}GB RAM /{" "}
+                    {product.details.storageSize}GB MEMORIA
+                  </b>
                   <br />
                 </Text>
-                <Text fontSize="sm">
-                  <Divider colorScheme={"whatsapp"} orientation='horizontal' />
-                  <b>PRECIO:</b> ${product.price.toLocaleString()} Efectivo
+                <Text fontSize="sm" color={"red"}>
+                  <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+                  <b>PRECIO:</b> ${product.price.toLocaleString()}
                 </Text>
-                <Divider colorScheme={"whatsapp"} orientation='horizontal' />
-                <ButtonGroup margin-top={2} variant="solid" spacing="2">
-
-                  <Button
-                    className={"btn-details"}
-                    target="_blank"
-                    leftIcon={<SiWhatsapp />}
-                    textAlign={"center"}
-                    size="xs"
-                    as={Link}
-                    href={`http://wa.me/3364194402?text=${encodeURIComponent(
-                      `Hola, necesito info sobre ${product.productName}.`
-                    )}`}
-                    colorScheme={"whatsapp"}>
-                    Consultar
-                  </Button>
-
-                  <Button
-                    className={"btn-details"}
-                    leftIcon={<FiSmartphone />}
-                    size="xs"
-                    as={Link}
-                    href={`products/${product.internalCode}`}
-                    colorScheme={"yellow"}
-                    margin={"auto"}>
-                    Especificaciones
-                  </Button>
-                </ButtonGroup>
+                <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+                {buttonAction(product.productName, product.internalCode)}
               </Box>
             </Flex>
-          }</>
+          )}
+        </>
+      ))}
+
+      <HStack>
+        <Icon icon="simple-icons:xiaomi" color="#ff6700" />
+        <Text fontWeight="bold" fontSize={23} color="#ff6700">
+          XIAOMI
+        </Text>
+      </HStack>
+      <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+      {products.map((product) => (
+        <>
+          {product.brand == "XIAOMI" && (
+            <Flex key={product._id}>
+              <Image width={100} height={100} src={product.avatarUrl} />
+              <Box ml="3">
+                <Text fontWeight="bold">
+                  <Link href={`products/${product.internalCode}`}>
+                    {product.productName}
+                  </Link>
+
+                  {BadgeCheckColor(product.details.condition)}
+                </Text>
+                <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+                <Text fontSize="sm">
+                  <b>
+                    {product.details.ramSize}GB RAM /{" "}
+                    {product.details.storageSize}GB MEMORIA
+                  </b>
+                  <br />
+                </Text>
+                <Text fontSize="sm" color={"red"}>
+                  <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+                  <b>PRECIO:</b> ${product.price.toLocaleString()} 
+                </Text>
+                <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+                {buttonAction(product.productName, product.internalCode)}
+              </Box>
+            </Flex>
+          )}
+        </>
       ))}
     </SimpleGrid>
-
-
   );
 }
