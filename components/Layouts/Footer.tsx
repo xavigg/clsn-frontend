@@ -4,7 +4,6 @@ import {
   chakra,
   Container,
   HStack,
-  Icon,
   Stack,
   Text,
   useColorModeValue,

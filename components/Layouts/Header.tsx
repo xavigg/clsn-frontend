@@ -14,6 +14,7 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 import { Routes } from '@/models';
 
+
 interface Props {
   children: React.ReactNode,
 }
@@ -54,11 +55,11 @@ export default function withAction({ children }: { children: ReactNode }) {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box color="white">
+            <Box color="black">
             <Image width={200} height={37} src={Routes.LOGO} alt="asd"/>
             </Box>
             <HStack
-              color="white"
+              color="black"
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
@@ -83,7 +84,7 @@ export default function withAction({ children }: { children: ReactNode }) {
           </Box>
         ) : null}
       </Box>
-      <Box p={4}>{children}</Box>
+      <Box p={4} pb={"60px"}>{children}</Box>
     </>
   );
 }
