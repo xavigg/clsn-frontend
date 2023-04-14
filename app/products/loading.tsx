@@ -1,3 +1,6 @@
+import '@/styles/loading.css'
 export default function Loading() {
-    return <h2>🌀 Cargando data desde el server, aguarde unos segundos...</h2>;
+    return (
+    <h2 className={"loader"}></h2>
+    );
   }

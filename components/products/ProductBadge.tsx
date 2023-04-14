@@ -25,22 +25,23 @@ interface Props {
   products: Product[];
 }
 
-const BadgeCheckColor = (badgeStatus: string) => {
+const badgeColor = (badgeStatus: string) => {
+  const status: any = {
+    "NUEVO": "purple",
+    "OFERTA": "green",
+    "TOPE GAMA": "orange",
+    "BESTIA": "blackAlpha"
+}
+const defaultColor = "red";
+return status[badgeStatus] || defaultColor;
+}
+
+const badgeCheckColor = (badgeStatus: string) => {
   return (
     <>
-      {badgeStatus === "NUEVO" ? (
-        <Badge variant="outline" ml="1" colorScheme="purple">
-          {badgeStatus}
+        <Badge variant="outline" ml="1" colorScheme={badgeColor(badgeStatus)}>
+        {badgeStatus}
         </Badge>
-      ) : badgeStatus === "OFERTA" ? (
-        <Badge variant="outline" ml="1" colorScheme="green">
-          {badgeStatus}
-        </Badge>
-      ) : (
-        <Badge variant="outline" ml="1" colorScheme="red">
-          {badgeStatus}
-        </Badge>
-      )}
     </>
   );
 };
@@ -107,7 +108,7 @@ export default function ProductBadge({ products }: Props) {
                   <Link href={`products/${product.internalCode}`}>
                     {product.productName}
                   </Link>
-                  {BadgeCheckColor(product.details.condition)}
+                  { badgeCheckColor(product.details.condition) }
                 </Text>
                 <Divider orientation="horizontal" />
                 <Text fontSize="sm">
@@ -147,7 +148,7 @@ export default function ProductBadge({ products }: Props) {
                     {product.productName}
                   </Link>
 
-                  {BadgeCheckColor(product.details.condition)}
+                  {badgeCheckColor(product.details.condition)}
                 </Text>
                 <Divider colorScheme={"whatsapp"} orientation="horizontal" />
                 <Text fontSize="sm">
@@ -187,7 +188,7 @@ export default function ProductBadge({ products }: Props) {
                     {product.productName}
                   </Link>
 
-                  {BadgeCheckColor(product.details.condition)}
+                  {badgeCheckColor(product.details.condition)}
                 </Text>
                 <Divider colorScheme={"whatsapp"} orientation="horizontal" />
                 <Text fontSize="sm">
