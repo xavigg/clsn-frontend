@@ -97,11 +97,10 @@ export default function ProductBadge({ products }: Props) {
       <HStack>
         <Icon icon="logos:samsung" />
       </HStack>
-      <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+      
       {products.map((product) => (
-        <>
-          {product.brand == "SAMSUNG" && (
-            <Flex key={product._id}>
+        <Flex key={product.internalCode}>
+          {product.brand == "SAMSUNG" && ( <>
               <Image width={100} height={100} src={product.avatarUrl} />
               <Box ml="3">
                 <Text fontWeight="bold">
@@ -110,7 +109,7 @@ export default function ProductBadge({ products }: Props) {
                   </Link>
                   { badgeCheckColor(product.details.condition) }
                 </Text>
-                <Divider orientation="horizontal" />
+                
                 <Text fontSize="sm">
                   <b>
                     {product.details.ramSize}GB RAM /{" "}
@@ -119,16 +118,14 @@ export default function ProductBadge({ products }: Props) {
                   <br />
                 </Text>
                 <Text fontSize="sm" color={"red"}>
-                  <Divider orientation="horizontal" />
+                  
                   <b>PRECIO:</b> ${product.price.toLocaleString()}
                 </Text>
-                <Divider orientation="horizontal" />
+                
                 {buttonAction(product.productName, product.internalCode)}
               </Box>
-            </Flex>
-          )}
-        </>
-      ))}
+          </>)}
+      </Flex>))}
 
       <HStack>
         <Icon icon="simple-icons:motorola" color="#5c92fa" />
@@ -136,11 +133,11 @@ export default function ProductBadge({ products }: Props) {
           MOTOROLA
         </Text>
       </HStack>
-      <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+      
       {products.map((product) => (
-        <>
+        <Flex key={product.internalCode}>
           {product.brand == "MOTOROLA" && (
-            <Flex key={product._id}>
+            <>
               <Image width={100} height={100} src={product.avatarUrl} />
               <Box ml="3">
                 <Text fontWeight="bold">
@@ -150,7 +147,7 @@ export default function ProductBadge({ products }: Props) {
 
                   {badgeCheckColor(product.details.condition)}
                 </Text>
-                <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+                
                 <Text fontSize="sm">
                   <b>
                     {product.details.ramSize}GB RAM /{" "}
@@ -159,16 +156,14 @@ export default function ProductBadge({ products }: Props) {
                   <br />
                 </Text>
                 <Text fontSize="sm" color={"red"}>
-                  <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+                  
                   <b>PRECIO:</b> ${product.price.toLocaleString()}
                 </Text>
-                <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+                
                 {buttonAction(product.productName, product.internalCode)}
               </Box>
-            </Flex>
-          )}
-        </>
-      ))}
+              </>)}
+      </Flex>))}
 
       <HStack>
         <Icon icon="simple-icons:xiaomi" color="#ff6700" />
@@ -176,11 +171,11 @@ export default function ProductBadge({ products }: Props) {
           XIAOMI
         </Text>
       </HStack>
-      <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+      
       {products.map((product) => (
-        <>
+        <Flex key={product.internalCode}>
           {product.brand == "XIAOMI" && (
-            <Flex key={product._id}>
+            <>
               <Image width={100} height={100} src={product.avatarUrl} />
               <Box ml="3">
                 <Text fontWeight="bold">
@@ -190,7 +185,7 @@ export default function ProductBadge({ products }: Props) {
 
                   {badgeCheckColor(product.details.condition)}
                 </Text>
-                <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+                
                 <Text fontSize="sm">
                   <b>
                     {product.details.ramSize}GB RAM /{" "}
@@ -199,16 +194,13 @@ export default function ProductBadge({ products }: Props) {
                   <br />
                 </Text>
                 <Text fontSize="sm" color={"red"}>
-                  <Divider colorScheme={"whatsapp"} orientation="horizontal" />
+                  
                   <b>PRECIO:</b> ${product.price.toLocaleString()} 
                 </Text>
-                <Divider colorScheme={"whatsapp"} orientation="horizontal" />
                 {buttonAction(product.productName, product.internalCode)}
               </Box>
-            </Flex>
-          )}
-        </>
-      ))}
+          </>)}
+      </Flex>))}
     </SimpleGrid>
   );
 }

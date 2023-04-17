@@ -10,51 +10,26 @@ import {
 import { useState } from "react";
 
 export default function Form() {
-
-  const [formProduct, setFormProduct] = useState<Product>({
-    internalCode: "",
-    productName: "",
-    description: "",
-    barCode: 0,
-    category: "",
-    subCategory: "",
-    brand: "",
-    warranty: 0,
-    price: 0,
-    aditionals: 0,
-    tax: 0,
-    markup: 0,
-    minStock: 0,
-    details: {
-      storageSize: "",
-      ramSize: "",
-      processorName: "",
-      mainCameraQuantity: 0,
-      mainCameraResolution: "",
-      selfieCameraResolution: "",
-      screenDetail: "",
-      batteryCapacity: 0,
-      os: "",
-      condition: "",
-    },
-    onlineMarket: true,
-    deleted: false,
-    serialNumberRequired: true,
-    avatarUrl: "",
-  });
+  const [formProduct, setFormProduct] = useState({});
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    if(event.target.name = "dramSize") {
-    setFormProduct({ ...formProduct, [formProduct.details.ramSize]: event.target.value });
-    console.log(formProduct);
-  } else { setFormProduct({ ...formProduct, [event.target.value]: event.target.value }); }
-  
- }
+    setFormProduct({
+      ...formProduct,
+      [event.target.name]: event.target.value,
+    });
+    console.log(formProduct)
+  }
 
+  function handleChangeSelect(event: React.ChangeEvent<HTMLSelectElement>) {
+    setFormProduct({
+      ...formProduct,
+      [event.target.name]: event.target.value,
+    });
+    console.log(formProduct)
+  }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(formProduct);
     const response = await newProduct(formProduct);
     return response;
   }
@@ -66,7 +41,7 @@ export default function Form() {
           <InputLeftAddon children="Nombre" />
           <Input
             placeholder="nombre de producto"
-            name="productName"
+            name={"productName"}
             onChange={handleChange}
           />
         </InputGroup>
@@ -92,8 +67,8 @@ export default function Form() {
 
         <InputGroup size={"sm"}>
           <InputLeftAddon children="Categoria" />
-          <Select name="category" variant="outline" placeholder="Outline">
-            <option value="option1">Option 1</option>
+          <Select name="category" onChange={handleChangeSelect} variant="outline" placeholder="Outline" >
+            <option value="option1" >Option 1</option>
             <option value="option2">Option 2</option>
             <option value="option3">Option 3</option>
           </Select>
@@ -101,12 +76,20 @@ export default function Form() {
 
         <InputGroup size={"sm"}>
           <InputLeftAddon children="Sub-Categoria" />
-          <Select name="subCategory" variant="outline" placeholder="Outline" />
+          <Select name="subCategory" onChange={handleChangeSelect} variant="outline" placeholder="Outline">
+            <option value="option1" >Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </Select>
         </InputGroup>
 
         <InputGroup size={"sm"}>
           <InputLeftAddon children="Marca" />
-          <Select name="brand" variant="outline" placeholder="Outline" />
+          <Select name="brand" onChange={handleChangeSelect} variant="outline" placeholder="Outline">
+            <option value="option1" >Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </Select>
         </InputGroup>
 
         <InputGroup size={"sm"}>
@@ -172,7 +155,82 @@ export default function Form() {
           <InputLeftAddon children="Memoria Ram" />
           <Input
             name="dramSize"
+            placeholder="Stock minimo del producto"
+            onChange={handleChange}
+          />
+        </InputGroup>
+        <InputGroup size={"sm"}>
+          <InputLeftAddon children="Memoria" />
+          <Input
+            name="dstorageSize"
+            placeholder="Stock minimo del producto"
+            onChange={handleChange}
+          />
+        </InputGroup>
+        <InputGroup size={"sm"}>
+          <InputLeftAddon children="Procesador" />
+          <Input
+            name="dprocessorName"
+            placeholder="Stock minimo del producto"
+            onChange={handleChange}
+          />
+        </InputGroup>
+        <InputGroup size={"sm"}>
+          <InputLeftAddon children="Cantidad Camaras" />
+          <Input
+            name="dmainCameraQuantity"
+            placeholder="Stock minimo del producto"
+            onChange={handleChange}
+          />
+        </InputGroup>
+        <InputGroup size={"sm"}>
+          <InputLeftAddon children="Camara Principal" />
+          <Input
+            name="mainCameraResolution"
+            placeholder="Stock minimo del producto"
+            onChange={handleChange}
+          />
+        </InputGroup>
+        <InputGroup size={"sm"}>
+          <InputLeftAddon children="Selfie Camara" />
+          <Input
+            name="selfieCameraResolution"
+            placeholder="Stock minimo del producto"
+            onChange={handleChange}
+          />
+        </InputGroup>
+        <InputGroup size={"sm"}>
+          <InputLeftAddon children="Pantalla" />
+          <Input
+            name="dscreenDetail"
+            placeholder="Stock minimo del producto"
+            onChange={handleChange}
+          />
+        </InputGroup>
+
+        <InputGroup size={"sm"}>
+          <InputLeftAddon children="Capacidad Bateria" />
+          <Input
+            name="dbatteryCapacity"
             type="number"
+            placeholder="Stock minimo del producto"
+            onChange={handleChange}
+          />
+        </InputGroup>
+
+        <InputGroup size={"sm"}>
+          <InputLeftAddon children="OS" />
+          <Input
+            name="dos"
+            placeholder="Stock minimo del producto"
+            onChange={handleChange}
+          />
+        </InputGroup>
+
+        <InputGroup size={"sm"}>
+          <InputLeftAddon children="Condicion" />
+          <Input
+            name="dcondition"
             placeholder="Stock minimo del producto"
             onChange={handleChange}
           />
