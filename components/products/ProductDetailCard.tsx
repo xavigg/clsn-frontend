@@ -22,7 +22,7 @@ import {
   MdScreenshot,
 } from "react-icons/md";
 import Loading from "@/app/products/loading";
-import "@/styles/test.css";
+//import "@/styles/local.css";
 
 interface StatsCardProps {
   title: string;
@@ -86,10 +86,10 @@ export default function BasicProductDetail({ products }: Props) {
         fontWeight={"bold"}
       >
         {products.productName}
-        <div className="test">
+        <div className="center-img">
           <Image
             priority
-            alt="asd"
+            alt={products.productName}
             src={products.avatarUrl}
             width={500}
             height={500}

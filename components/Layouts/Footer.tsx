@@ -1,4 +1,5 @@
 "use client";
+import "@/styles/local.css";
 import {
   Box,
   chakra,
@@ -51,7 +52,7 @@ const SocialButton = ({
 
 export default function SmallWithLogoLeft() {
   return (
-    <Box boxShadow={'xs'}>
+    <Box boxShadow={'xs'} className="footer">
       <Container
         color={"black"}
         as={Stack}

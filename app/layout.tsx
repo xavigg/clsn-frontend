@@ -2,7 +2,7 @@
 import { Footer, Header } from "@/components";
 import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider } from "@chakra-ui/react";
-import "@/styles/test.css";
+import "@/styles/local.css";
 
 export default function RootLayout({
   children,
@@ -11,11 +11,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <head></head>
+      <head>
+      <script>0</script>
+      </head>
       <body>
         <CacheProvider>
           <ChakraProvider>
-            <div className="flex-wrapper">
+            <div className="container">
               <Header>{children}</Header>
               <Footer />
             </div>

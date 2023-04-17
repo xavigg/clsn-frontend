@@ -18,8 +18,8 @@ import { Product } from "@/app/products/models";
 import { useEffect, useState } from "react";
 import Loading from "@/app/products/loading";
 import Link from "next/link";
-import "@/styles/test.css";
 import { Icon } from "@iconify/react";
+
 
 interface Props {
   products: Product[];

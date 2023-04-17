@@ -84,7 +84,7 @@ export default function withAction({ children }: { children: ReactNode }) {
           </Box>
         ) : null}
       </Box>
-      <Box p={4} pb={"60px"}>{children}</Box>
+      <Box p={3} pb={"130px"}>{children}</Box>
     </>
   );
 }

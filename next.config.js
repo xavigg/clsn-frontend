@@ -6,6 +6,7 @@ const nextConfig = {
   images: {
     domains: ['sharecomputacion.com', 'cdn.smart-gsm.com'],
   },
+  
 }
 
 module.exports = nextConfig

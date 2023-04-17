@@ -1,24 +1,11 @@
-'use client'
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
-} from '@chakra-ui/react'
-
-type Params = {
-  params: {
-    internalCode: string;
-  };
-};
-
-function CreateProduct() {
+import { ProductCreate } from "@/components";
+ 
+ function CreateProduct() {
   return (
-    <FormControl isRequired>
-      <FormLabel>Nombre Producto</FormLabel>
-      <Input placeholder="Nombre Producto" />
-    </FormControl>
+    <>
+      <h1>Crear Producto</h1>
+      <ProductCreate></ProductCreate>
+    </>
   );
 }
 
