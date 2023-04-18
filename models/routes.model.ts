@@ -7,5 +7,7 @@ export enum Routes {
 
     /* PRODUCTROS  */
     PRODUCTS = "/products",
-    PRODUCT_DETAIL = "/products/"
+    PRODUCT_DETAIL = "/products/",
+    PRODUCT_BRAND = "/products/brand/",
+    PRODUCT_CONDITION = "/products/condition/"
 }

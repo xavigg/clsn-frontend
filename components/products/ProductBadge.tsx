@@ -9,7 +9,6 @@ import {
   Box,
   Badge,
   Divider,
-  Kbd,
   HStack,
 } from "@chakra-ui/react";
 import { SiWhatsapp } from "react-icons/si";
@@ -20,28 +19,30 @@ import Loading from "@/app/products/loading";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 
-
 interface Props {
-  products: Product[];
+  products: Product[],
+  icon?: any;
+  brand: string,
+  color?: string,
 }
 
 const badgeColor = (badgeStatus: string) => {
   const status: any = {
-    "NUEVO": "purple",
-    "OFERTA": "green",
+    NUEVO: "purple",
+    OFERTA: "green",
     "TOPE GAMA": "orange",
-    "BESTIA": "blackAlpha"
-}
-const defaultColor = "red";
-return status[badgeStatus] || defaultColor;
-}
+    BESTIA: "blackAlpha",
+  };
+  const defaultColor = "red";
+  return status[badgeStatus] || defaultColor;
+};
 
 const badgeCheckColor = (badgeStatus: string) => {
   return (
     <>
-        <Badge variant="outline" ml="1" colorScheme={badgeColor(badgeStatus)}>
+      <Badge variant="outline" ml="1" colorScheme={badgeColor(badgeStatus)}>
         {badgeStatus}
-        </Badge>
+      </Badge>
     </>
   );
 };
@@ -59,8 +60,11 @@ const buttonAction = (productName: string, internalCode: string) => {
           textAlign={"center"}
           size={"xs"}
           as={Link}
-          href={`http://wa.me/3364194402?text=${encodeURIComponent(`Hola, necesito info sobre ${productName}.`)}`}
-          colorScheme={"whatsapp"}>
+          href={`http://wa.me/3364194402?text=${encodeURIComponent(
+            `Hola, necesito info sobre ${productName}.`
+          )}`}
+          colorScheme={"whatsapp"}
+        >
           Consultar
         </Button>
 
@@ -73,7 +77,8 @@ const buttonAction = (productName: string, internalCode: string) => {
           as={Link}
           href={`products/${internalCode}`}
           colorScheme={"twitter"}
-          margin={"auto"}>
+          margin={"auto"}
+        >
           Detalles
         </Button>
       </ButtonGroup>
@@ -81,7 +86,7 @@ const buttonAction = (productName: string, internalCode: string) => {
   );
 };
 
-export default function ProductBadge({ products }: Props) {
+export default function ProductBadge({ products, icon, brand, color }: Props) {
   const [hasMounted, setHasMounted] = useState(false);
 
   // Hooks
@@ -95,112 +100,41 @@ export default function ProductBadge({ products }: Props) {
   return (
     <SimpleGrid columns={1} spacing={2}>
       <HStack>
-        <Icon icon="logos:samsung" />
-      </HStack>
-      
-      {products.map((product) => (
-        <Flex key={product.internalCode}>
-          {product.brand == "SAMSUNG" && ( <>
-              <Image width={100} height={100} src={product.avatarUrl} />
-              <Box ml="3">
-                <Text fontWeight="bold">
-                  <Link href={`products/${product.internalCode}`}>
-                    {product.productName}
-                  </Link>
-                  { badgeCheckColor(product.details.condition) }
-                </Text>
-                
-                <Text fontSize="sm">
-                  <b>
-                    {product.details.ramSize}GB RAM /{" "}
-                    {product.details.storageSize}GB MEMORIA
-                  </b>
-                  <br />
-                </Text>
-                <Text fontSize="sm" color={"red"}>
-                  
-                  <b>PRECIO:</b> ${product.price.toLocaleString()}
-                </Text>
-                
-                {buttonAction(product.productName, product.internalCode)}
-              </Box>
-          </>)}
-      </Flex>))}
-
-      <HStack>
-        <Icon icon="simple-icons:motorola" color="#5c92fa" />
-        <Text fontWeight="bold" fontSize={23} color={"#5c92fa"}>
-          MOTOROLA
+        <Icon icon={icon} color={color} />
+        <Text fontWeight="bold" fontSize={23} color={color}>
+         {brand != "SAMSUNG" && ( brand )} 
         </Text>
       </HStack>
-      
+      <Divider orientation='horizontal' />
       {products.map((product) => (
-        <Flex key={product.internalCode}>
-          {product.brand == "MOTOROLA" && (
+        <Box key={product.internalCode} >
+          {product.brand == brand && (
             <>
-              <Image width={100} height={100} src={product.avatarUrl} />
-              <Box ml="3">
-                <Text fontWeight="bold">
-                  <Link href={`products/${product.internalCode}`}>
-                    {product.productName}
-                  </Link>
-
-                  {badgeCheckColor(product.details.condition)}
-                </Text>
-                
-                <Text fontSize="sm">
-                  <b>
-                    {product.details.ramSize}GB RAM /{" "}
-                    {product.details.storageSize}GB MEMORIA
-                  </b>
-                  <br />
-                </Text>
-                <Text fontSize="sm" color={"red"}>
-                  
-                  <b>PRECIO:</b> ${product.price.toLocaleString()}
-                </Text>
-                
-                {buttonAction(product.productName, product.internalCode)}
-              </Box>
-              </>)}
-      </Flex>))}
-
-      <HStack>
-        <Icon icon="simple-icons:xiaomi" color="#ff6700" />
-        <Text fontWeight="bold" fontSize={23} color="#ff6700">
-          XIAOMI
-        </Text>
-      </HStack>
-      
-      {products.map((product) => (
-        <Flex key={product.internalCode}>
-          {product.brand == "XIAOMI" && (
-            <>
-              <Image width={100} height={100} src={product.avatarUrl} />
-              <Box ml="3">
-                <Text fontWeight="bold">
-                  <Link href={`products/${product.internalCode}`}>
-                    {product.productName}
-                  </Link>
-
-                  {badgeCheckColor(product.details.condition)}
-                </Text>
-                
-                <Text fontSize="sm">
-                  <b>
-                    {product.details.ramSize}GB RAM /{" "}
-                    {product.details.storageSize}GB MEMORIA
-                  </b>
-                  <br />
-                </Text>
-                <Text fontSize="sm" color={"red"}>
-                  
-                  <b>PRECIO:</b> ${product.price.toLocaleString()} 
-                </Text>
-                {buttonAction(product.productName, product.internalCode)}
-              </Box>
-          </>)}
-      </Flex>))}
+              <Flex>
+                <Image width={100} height={100} src={product.avatarUrl} />
+                <Box ml="3">
+                  <Text fontWeight="bold">
+                    <Link href={`products/${product.internalCode}`}>
+                      {product.productName}
+                    </Link>
+                    {badgeCheckColor(product.details.condition)}
+                  </Text>
+                  <Divider orientation='horizontal' />
+                  <Text fontSize="sm">
+                    <b>{product.details.ramSize}GB RAM /{" "} {product.details.storageSize}GB MEMORIA</b>
+                  </Text>
+                  <Divider orientation='horizontal' />
+                  <Text fontSize="sm" color={"red"}>
+                    <b>PRECIO:</b> ${product.price.toLocaleString()}
+                  </Text>
+                  <Divider orientation='horizontal' />
+                  {buttonAction(product.productName, product.internalCode)}
+                </Box>
+              </Flex>
+            </>
+          )}
+        </Box>
+      ))}
     </SimpleGrid>
   );
 }

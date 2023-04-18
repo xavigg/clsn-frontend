@@ -15,6 +15,20 @@ export const getProductByInternalCode = (internalCode: string): Promise<Product>
     return productData;
 };
 
+export const getProductByBrand = (brand: string): Promise<Product[]> => {
+  const url = process.env.VERCEL_HOST + Routes.PRODUCT_BRAND + brand.toLowerCase();
+  const productData = fetch(url, { cache: 'no-store' })
+      .then((response) => response.json())
+  return productData;
+};
+
+export const getProductByCondition = (condition: string): Promise<Product> => {
+  const url = process.env.VERCEL_HOST + Routes.PRODUCT_CONDITION + condition;
+  const productData = fetch(url, { cache: 'no-store' })
+      .then((response) => response.json())
+  return productData;
+};
+
 export async function newProduct( data: any) {
 
   const newP = {

@@ -34,8 +34,8 @@ const NavLink = ({ children }: Props) => (
     py={1}
     rounded={'md'}
     _hover={{
-      textDecoration: 'underline',
-      bg: useColorModeValue('gray.400', 'gray.700'),
+      bg: useColorModeValue('yellow.400', 'yellow.700'),
+      textColor: "white",
     }}>
     {children}
   </Box>
