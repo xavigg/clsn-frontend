@@ -68,27 +68,27 @@ export default function Form() {
         <InputGroup size={"sm"}>
           <InputLeftAddon children="Categoria" />
           <Select name="category" onChange={handleChangeSelect} variant="outline" placeholder="Outline" >
-            <option value="option1" >Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+            <option value="TECNOLOGIA">TECNOLOGIA</option>
+            <option value="HOGAR">HOGAR</option>
+            <option value="TELEFONIA">TELEFONIA</option>
           </Select>
         </InputGroup>
 
         <InputGroup size={"sm"}>
           <InputLeftAddon children="Sub-Categoria" />
           <Select name="subCategory" onChange={handleChangeSelect} variant="outline" placeholder="Outline">
-            <option value="option1" >Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+            <option value="CELULARES">CELULARES</option>
+            <option value="COCINA">COCINA</option>
+            <option value="ACCESORIOS">ACCESORIOS</option>
           </Select>
         </InputGroup>
 
         <InputGroup size={"sm"}>
           <InputLeftAddon children="Marca" />
           <Select name="brand" onChange={handleChangeSelect} variant="outline" placeholder="Outline">
-            <option value="option1" >Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+            <option value="SAMSUNG">SAMSUNG</option>
+            <option value="MOTOROLA">MOTOROLA</option>
+            <option value="XIAOMI">XIAOMI</option>
           </Select>
         </InputGroup>
 
@@ -104,7 +104,7 @@ export default function Form() {
         <InputGroup size={"sm"}>
           <InputLeftAddon children="Garantia Venta" />
           <Input
-            name="avatarUrl"
+            name="warranty"
             type="number"
             placeholder="nombre de producto"
             onChange={handleChange}

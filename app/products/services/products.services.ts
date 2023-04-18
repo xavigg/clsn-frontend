@@ -1,10 +1,8 @@
 import { Routes } from "@/models";
 import { Product } from "../models";
-import axios from "axios";
 
 export const getProducts = (): Promise<Product[]> => {
     const url = process.env.VERCEL_HOST + Routes.PRODUCTS;
-    console.log(url);
     const productData = fetch(url, { cache: 'no-store' })
         .then((response) => response.json())
     return productData;
@@ -20,7 +18,6 @@ export const getProductByInternalCode = (internalCode: string): Promise<Product>
 export async function newProduct( data: any) {
 
   const newP = {
-    internalCode: "333",
     productName: data.productName,
     description: data.description,
     barCode: data.barCode,
@@ -51,11 +48,8 @@ export async function newProduct( data: any) {
     avatarUrl: data.avatarUrl,
   }
 
-  console.log(newP)
-
     try {
-      const url = "http://localhost:3000/products/"
-
+      const url = process.env.NEXT_PUBLIC_LOCAL_BACKEND + Routes.PRODUCTS;
       const options = {
         method: 'POST',
         body: JSON.stringify(newP),
