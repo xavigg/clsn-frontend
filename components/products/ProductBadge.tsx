@@ -98,41 +98,46 @@ export default function ProductBadge({ products, icon, brand, color }: Props) {
   if (!hasMounted) return <Loading />;
 
   return (
-    <SimpleGrid columns={1} spacing={2}>
-      <HStack>
-        <Icon icon={icon} color={color} />
+    <SimpleGrid columns={1} spacing={2} mb={2}>
+      <HStack mb={0}>
+        {brand == "SAMSUNG" ? (
+          <Icon icon={icon} color={color} />
+        ) : (
+          <Icon icon={icon} color={color} width="30" height="30" />
+        )}
         <Text fontWeight="bold" fontSize={23} color={color}>
-         {brand != "SAMSUNG" && ( brand )} 
+          {brand != "SAMSUNG" ? brand : " "}
         </Text>
       </HStack>
-      <Divider orientation='horizontal' />
+      
       {products.map((product) => (
-        <Box key={product.internalCode} >
+        <Box key={product.internalCode}>
           {product.brand == brand && (
             <>
               <Flex>
                 <Image width={100} height={100} src={product.avatarUrl} />
                 <Box ml="3">
-                  <Text fontWeight="bold">
+                  <Text fontWeight="bold" textDecoration={"dotted"}>
                     <Link href={`products/${product.internalCode}`}>
                       {product.productName}
                     </Link>
                     {badgeCheckColor(product.details.condition)}
                   </Text>
-                  <Divider orientation='horizontal' />
                   <Text fontSize="sm">
-                    <b>{product.details.ramSize}GB RAM /{" "} {product.details.storageSize}GB MEMORIA</b>
+                    <b>
+                      {product.details.ramSize}GB RAM /{" "}
+                      {product.details.storageSize}GB MEMORIA
+                    </b>
                   </Text>
-                  <Divider orientation='horizontal' />
                   <Text fontSize="sm" color={"red"}>
                     <b>PRECIO:</b> ${product.price.toLocaleString()}
                   </Text>
-                  <Divider orientation='horizontal' />
                   {buttonAction(product.productName, product.internalCode)}
                 </Box>
               </Flex>
             </>
           )}
+          <Divider orientation="horizontal" borderColor={"gray.400"} mt={2}/>
         </Box>
       ))}
     </SimpleGrid>

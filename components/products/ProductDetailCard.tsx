@@ -22,7 +22,6 @@ import {
   MdScreenshot,
 } from "react-icons/md";
 import Loading from "@/app/products/loading";
-//import "@/styles/local.css";
 
 interface StatsCardProps {
   title: string;

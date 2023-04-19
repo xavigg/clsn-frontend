@@ -18,7 +18,7 @@ const brands = {
   samsung: {
     name: "SAMSUNG",
     icon: "logos:samsung",
-    color: "#5c92fa"
+    color: "#1428a0"
   },
   xiaomi: {
     name: "XIAOMI",

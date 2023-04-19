@@ -12,7 +12,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-      <script>0</script>
+        <script></script>
       </head>
       <body>
         <CacheProvider>
