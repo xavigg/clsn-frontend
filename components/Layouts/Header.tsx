@@ -41,7 +41,7 @@ const NavLink = ({ children }: Props) => (
   </Box>
 );
 
-export default function withAction({ children }: { children: ReactNode }) {
+export default function withAction() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -84,7 +84,6 @@ export default function withAction({ children }: { children: ReactNode }) {
           </Box>
         ) : null}
       </Box>
-      <Box p={3} pb={"130px"} bg={"whitesmoke"}>{children}</Box>
     </>
   );
 }

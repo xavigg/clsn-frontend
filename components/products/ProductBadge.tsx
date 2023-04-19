@@ -99,7 +99,7 @@ export default function ProductBadge({ products, icon, brand, color }: Props) {
 
   return (
     <SimpleGrid columns={1} spacing={2} mb={2}>
-      <HStack mb={0}>
+      <HStack mb={0} ml={1}>
         {brand == "SAMSUNG" ? (
           <Icon icon={icon} color={color} />
         ) : (
@@ -111,7 +111,7 @@ export default function ProductBadge({ products, icon, brand, color }: Props) {
       </HStack>
       
       {products.map((product) => (
-        <Box key={product.internalCode} boxShadow='base' p='2' rounded='md' bg={"white"}>
+        <Box key={product.internalCode} boxShadow={"base"} p={2} rounded={"md"} bg={"white"}>
           {product.brand == brand && (
             <>
               <Flex>
