@@ -1,7 +1,7 @@
 import '@/styles/loading.css'
 export default function Loading() {
     return (
-      <div className="center">
+      <div className="center" bg={"whitesmoke"}>
         <div
           aria-label="Orange and tan hamster running in a metal wheel"
           role="img"

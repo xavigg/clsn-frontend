@@ -45,7 +45,7 @@ export default function withAction({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Box boxShadow='md' px={4}>
+      <Box boxShadow='md' px={4} bg={"white"}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
@@ -84,7 +84,7 @@ export default function withAction({ children }: { children: ReactNode }) {
           </Box>
         ) : null}
       </Box>
-      <Box p={3} pb={"130px"}>{children}</Box>
+      <Box p={3} pb={"130px"} bg={"whitesmoke"}>{children}</Box>
     </>
   );
 }

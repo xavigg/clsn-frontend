@@ -111,7 +111,7 @@ export default function ProductBadge({ products, icon, brand, color }: Props) {
       </HStack>
       
       {products.map((product) => (
-        <Box key={product.internalCode}>
+        <Box key={product.internalCode} boxShadow='base' p='2' rounded='md' bg={"white"}>
           {product.brand == brand && (
             <>
               <Flex>
@@ -137,7 +137,6 @@ export default function ProductBadge({ products, icon, brand, color }: Props) {
               </Flex>
             </>
           )}
-          <Divider orientation="horizontal" borderColor={"gray.400"} mt={2}/>
         </Box>
       ))}
     </SimpleGrid>
