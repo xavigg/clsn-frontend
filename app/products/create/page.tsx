@@ -1,10 +1,10 @@
-import { ProductCreate } from "@/components";
- 
+import { Create } from "../components";
+
  function CreateProduct() {
   return (
     <>
       <h1>Crear Producto</h1>
-      <ProductCreate></ProductCreate>
+      <Create></Create>
     </>
   );
 }

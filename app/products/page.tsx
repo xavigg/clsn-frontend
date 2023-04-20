@@ -1,7 +1,7 @@
-import { ProductCardList, ProductCard, ProductBadge } from "@/components";
-import { getProductByBrand } from "./services";
 import { Suspense } from "react";
+import { getProductByBrand } from "./services";
 import Loading from "./loading";
+import Card from "./components/Card";
 
 async function fechtProductByBrand(brand: string) {
   return await getProductByBrand(brand);
@@ -31,21 +31,21 @@ async function Products() {
   const motorola = await fechtProductByBrand(brands.motorola.name);
   const xiaomi = await fechtProductByBrand(brands.xiaomi.name);
   
-  return (
+   return (
     <Suspense fallback={<Loading />}>
-      <ProductBadge
+      <Card
         products={samsung}
         brand={brands.samsung.name}
         icon={brands.samsung.icon}
         color={brands.samsung.color}
       />
-      <ProductBadge
+      <Card
         products={motorola}
         brand={brands.motorola.name}
         icon={brands.motorola.icon}
         color={brands.motorola.color}
       />
-      <ProductBadge
+      <Card
         products={xiaomi}
         brand={brands.xiaomi.name}
         icon={brands.xiaomi.icon}

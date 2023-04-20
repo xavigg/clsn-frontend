@@ -1,6 +1,6 @@
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { getProductByInternalCode } from "../services";
-import ProductDetailCard from "@/components/products/ProductDetailCard";
+import DetailsCard from "@/app/products/components/DetailsCard";
 import Link from "next/link";
 import { Routes } from "@/models";
 
@@ -19,7 +19,7 @@ async function fetchProductByInternalCode(internalCode: string) {
 
    return (
      <>
-       <ProductDetailCard products={data} />
+       <DetailsCard products={data} />
        <Link href={Routes.PRODUCTS} className="float">
          <FaArrowAltCircleLeft className="my-float" />
        </Link>

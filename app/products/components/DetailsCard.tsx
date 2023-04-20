@@ -43,6 +43,7 @@ function StatsCard(props: StatsCardProps) {
       border={"1px solid"}
       borderColor={useColorModeValue("gray.800", "gray.500")}
       rounded={"lg"}
+      bg={"white"}
     >
       <Flex justifyContent={"space-between"}>
         <Box pl={{ base: 2, md: 4 }}>
